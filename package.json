@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node ./bin/www.js",
     "dev": "nodemon ./bin/www.js",
-    "categories": "node ./models/data/categories.js"
+    "cities": "node ./models/data/cities.js"
   },
   "dependencies": {
     "cookie-parser": "~1.4.4",
