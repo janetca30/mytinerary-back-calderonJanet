@@ -6,24 +6,37 @@ const itineraryController = {
   
   addItinerary: async(req, res)=>{
     try {
-      let { id } = req.params
-      console.log("entrega a itinerary")
-      let cityFound = await City.findById(id)
+      let { id } = req.params;
+      //console.log("entrega a itinerary")
+      const cityFound = await City.findById(id);
 
-      let newItinerary = await Itinerary.create({  city: cityFound})
+      if (!cityFound) {
+        // Si no se encuentra la ciudad, devolver un error 404
+        return res.status(404).json({
+          message: 'City not found',
+        });
+      }
 
-      await cityFound.updateOne({itineraries:[...cityFound.itineraries, newItinerary]})
+      const newItinerary = await Itinerary.create({ city: cityFound._id});
 
-      let cityFoundUpdated = await City.findById(id).populate('itineraries')
+      cityFound.itineraries.push(newItinerary);
+      await cityFound.save();
 
-      res.status(200).json({
+//      await cityFound.updateOne({itineraries:[...cityFound.itineraries, newItinerary]})
+
+      const cityFoundUpdated = await City.findById(id).populate('itineraries')
+
+      return res.status(200).json({
       
       message: 'City has been updated successfully',
       city : cityFoundUpdated
 
     });
     } catch (error) {
-    res.status(400).json({message: error.message}); 
+    
+    return res.status(500).json({
+      message: 'An error occurred', 
+      error: error.message}); 
     }
   },
 
