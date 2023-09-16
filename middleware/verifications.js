@@ -15,10 +15,10 @@ const userSchema = Joi.object({
     'string.pattern.base':'the name can only have letters',
     'any.required': "Please enter your lastname"
   }), 
-  email: Joi.string().email().min(8).max(20).required().messages({
+  email: Joi.string().email().min(8).max(30).required().messages({
     'string.email': "Please enter a valid email",
     'string.min': "Email must be at least 8 characters",
-    'string.max': "Email must be at least 20 characters",
+    'string.max': "Email must be at least 30 characters",
     'string.empty': "Please enter your email",
     'any.required': "Please enter your email"
   }),
@@ -27,10 +27,10 @@ const userSchema = Joi.object({
     'string.empty': "Please enter your photo",
     
   }), 
-  password: Joi.string().alphanum().min(6).max(16).required().messages({
+  password: Joi.string().alphanum().min(6).max(30).required().messages({
     'string.alphanum': "Password must contain only letters and numbers",
     'string.min': "Paswoord must be at least 6 characters",
-    'string.max': "Paswoord must be at least 16 characters",
+    'string.max': "Paswoord must be at least 30 characters",
     'string.empty': "Please enter your password",
     'any.required': "Please enter your password",
   }),
@@ -56,17 +56,17 @@ const verifyAuthData = (req, res, next) => {
 
 
 const signInSchema = Joi.object({
-  email: Joi.string().email().min(8).max(20).required().messages({
+  email: Joi.string().email().min(8).max(30).required().messages({
     'string.email': "Please enter a valid email",
     'string.min': "Email must be at least 8 characters",
-    'string.max': "Email must be at least 20 characters",
+    'string.max': "Email must be at least 30 characters",
     'string.empty': "Please enter your email",
     'any.required': "Please enter your email"
   }),
-  password: Joi.string().alphanum().min(6).max(16).required().messages({
+  password: Joi.string().alphanum().min(6).max(30).required().messages({
     'string.alphanum': "Password must contain only letters and numbers",
     'string.min': "Paswoord must be at least 6 characters",
-    'string.max': "Paswoord must be at least 16 characters",
+    'string.max': "Paswoord must be at least 30 characters",
     'string.empty': "Please enter your password",
     'any.required': "Please enter your password",
   }),
