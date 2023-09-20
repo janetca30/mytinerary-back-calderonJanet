@@ -1,9 +1,6 @@
-import mongoose from "mongoose";
 import User from "../models/User.js"
 
-const userController = {
-
-  usersAll: async (req, res) => {
+export const usersAll = async (req, res) => {
     let error = null
     let result = []
     try {
@@ -15,9 +12,9 @@ const userController = {
     } catch (error) {
       res.json({success: false, response: null })
     }
-  },
+  }
 
-  signUp: async (req, res) => {
+export const signUp = async (req, res) => {
 
     try {
       const { name, lastName, email, imageUrl, password, country, googleUser } = req.body;
@@ -40,9 +37,9 @@ const userController = {
     } catch (e) {
       res.status(400).json({ message: e.message})
     }
-  },
+  }
 
-  signIn: async (req, res) => {
+export const signIn = async (req, res) => {
     
     try {  
       
@@ -62,9 +59,9 @@ const userController = {
     } catch (e) {
       res.status(400).json({ message: e.message});
     }
-  },
+  }
 
-  authenticated:async (req, res) => {
+export const authenticated = async (req, res) => {
     
     try {  
       
@@ -75,13 +72,13 @@ const userController = {
           email: req.user.email,
           _id: req.user._id,
         }
-      })
-    } catch (e) {
-      res.status(400).json({ message: e.message});
+      });
+    } catch (error) {
+      res.status(400).json({ message: error.message});
     }
-  },
+  }
 
-  signOut: async (req, res) => {
+export const signOut = async (req, res) => {
      try {
       res.status(200).json({ message: 'logged out', token: req.token})
      } catch (error) {
@@ -89,9 +86,8 @@ const userController = {
      }
   }
   
-};
 
-export default userController;
+
 
 
 

@@ -7,7 +7,7 @@ const userSchema = new Schema({
   imageUrl:{type:String, required:true},
   password:{type:String, required:true},
   country:{type:String, required:false},
-  googleUser:{type:Boolean, default:false},
+  //googleUser:{type:Boolean, default:false},
  // itinerariesLiked:[{type:mongoose.Types.ObjectId}]
 },{
   timestamps: true

@@ -38,7 +38,7 @@ const userSchema = Joi.object({
     'string.empty' : "Select a Country",
     
   }), 
-  googleUser: Joi.boolean(),
+  //googleUser: Joi.boolean(),
   }) 
 
 

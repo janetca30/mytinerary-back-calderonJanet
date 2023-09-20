@@ -10,8 +10,8 @@ export function hashPassword (req, res, next) {
     const hashPassword = bcrypt.hashSync(passwordPlain, 10)
     req.body.password = hashPassword
     next ()
-  } catch (err) {
-    res.status(500).json({ error: err})
+  } catch (error) {
+    res.status(500).json({ message: error.message})
   }
 }
 
@@ -24,7 +24,7 @@ export function verifyPassword (req, res, next) {
   if(isValid){
     next()
   }else{
-    res.status(400).json({message: 'wrong password'})
+    res.status(400).json({message: 'invalid password'})
   }
   
 }
