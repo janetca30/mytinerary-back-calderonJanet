@@ -5,8 +5,8 @@
   "type": "module",
   "scripts": {
     "start": "node ./bin/www.js",
-    "dev": "nodemon ./bin/www.js",
-    "cities": "node ./models/data/cities.js"
+    "dev": "nodemon ./bin/www.js --omit=dev",
+    "cities": "node ./models/data/cities.js --omit=dev"
   },
   "dependencies": {
     "bcrypt": "^5.1.1",
